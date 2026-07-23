@@ -1,0 +1,41 @@
+import java.util.*;
+
+class Solution {
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+
+        HashSet<Integer> set1 = new HashSet<>();
+        HashSet<Integer> set2 = new HashSet<>();
+
+        // Store unique elements
+        for (int num : nums1) {
+            set1.add(num);
+        }
+
+        for (int num : nums2) {
+            set2.add(num);
+        }
+
+        List<Integer> ans1 = new ArrayList<>();
+        List<Integer> ans2 = new ArrayList<>();
+
+        // Elements present in set1 but not in set2
+        for (int num : set1) {
+            if (!set2.contains(num)) {
+                ans1.add(num);
+            }
+        }
+
+        // Elements present in set2 but not in set1
+        for (int num : set2) {
+            if (!set1.contains(num)) {
+                ans2.add(num);
+            }
+        }
+
+        List<List<Integer>> result = new ArrayList<>();
+        result.add(ans1);
+        result.add(ans2);
+
+        return result;
+    }
+}
